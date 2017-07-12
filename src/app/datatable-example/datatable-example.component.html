@@ -1,16 +1,50 @@
- <p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
- <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true">
-    <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
-    <p-column field="title" header="TITULO" [editable]="true" [sortable]="true"></p-column>
+<p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
+<p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
+  selectionMode="single">
+  <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
+  <p-column field="title" header="TITULO" [editable]="true" [sortable]="true"></p-column>
 </p-dataTable>
+<p-contextMenu #cm [model]="aContextualMenuItems" [styleClass]="detailContainer"></p-contextMenu>
 <br />
 <table width="100%">
   <tr>
+
     <td>
       <button (click)="alterDataTableColumns([
         { fieldName: 'body', headerCaption: 'CUERPO' },
         { fieldName: 'userId', headerCaption: 'ID USUARIO' }
       ])">Alterar Campos de tabla</button>
     </td>
+
+    <td>
+      <button (click)="alterDataTableColumns([
+        { fieldName: 'userId', headerCaption: 'ID USUARIO' },
+        { fieldName: 'title', headerCaption: 'TITULO' }
+      ])">Revertir a campos originales</button>
+    </td>
+
+    <td>
+      <button (click)="addDataTableColumns([
+      { field: 'body', header: 'CUERPO', sortable: true },
+      { field: 'id', header: 'ID POST', sortable: true }
+      ])">Agregar columnas</button>
+    </td>
+
+    <td>
+      <button (click)="removeDataTableColumns(2, 2)">Quitar columnas</button>
+    </td>
+
+    <td>
+      <button (click)="loadCommentsData()">Cargar comentarios</button>
+    </td>
+
+    <td>
+      <button (click)="loadPhotosData()">Cargar Fotos</button>
+    </td>
+
+    <td>
+      <button (click)="loadAlbumsData()">Cargar Albumes</button>
+    </td>
+
   </tr>
 </table>
