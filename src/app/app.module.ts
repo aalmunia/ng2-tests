@@ -9,7 +9,7 @@ import { WelcomeComponentComponent } from './welcome-component/welcome-component
 
 import { HttpModule } from '@angular/http';
 
-import {DataTableModule,SharedModule} from 'primeng/primeng';
+import {DataTableModule,SharedModule, GrowlModule} from 'primeng/primeng';
 
 const aRutas : Routes = [
   { path: '', component: WelcomeComponentComponent },
@@ -26,6 +26,7 @@ const aRutas : Routes = [
     BrowserModule,
     HttpModule,
     DataTableModule,
+    GrowlModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

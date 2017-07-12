@@ -1,5 +1,16 @@
- <!-- @TODO: Implementar CSS de PrimeNG. Mirar a ver los temas --> 
- <p-dataTable [value]="aDataPosts">
-    <p-column field="userId" header="User ID"></p-column>
-    <p-column field="title" header="Titulo"></p-column>    
+ <p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
+ <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true">
+    <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
+    <p-column field="title" header="TITULO" [editable]="true" [sortable]="true"></p-column>
 </p-dataTable>
+<br />
+<table width="100%">
+  <tr>
+    <td>
+      <button (click)="alterDataTableColumns([
+        { fieldName: 'body', headerCaption: 'CUERPO' },
+        { fieldName: 'userId', headerCaption: 'ID USUARIO' }
+      ])">Alterar Campos de tabla</button>
+    </td>
+  </tr>
+</table>
