@@ -219,5 +219,4 @@ export class DatatableExampleComponent implements OnInit {
       this.aDataRows = aPhotos.json();
     });
   }
-
 }
