@@ -1,6 +1,6 @@
 <p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
 <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
-  selectionMode="single">
+  selectionMode="single" resizableColumns="true">
   <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
   <p-column field="title" header="TITULO" [editable]="true" [sortable]="true"></p-column>
 </p-dataTable>
@@ -8,6 +8,9 @@
 <br />
 <table width="100%">
   <tr>
+
+    <!-- 8 celdas por fila de momento -->
+    <!-- @TODO: Implementar grid de Bootstrap -->
 
     <td>
       <button (click)="alterDataTableColumns([
@@ -46,5 +49,31 @@
       <button (click)="loadAlbumsData()">Cargar Albumes</button>
     </td>
 
+    <td>
+      <button (click)="loadAnyData('https://jsonplaceholder.typicode.com/todos')">Cargar datos varios</button>
+    </td>
+
   </tr>
+
+  <tr>
+    
+    <td>
+      <button (click)="makeColumnsUnresizable()">Columnas no movibles</button>
+    </td>
+
+    <td>
+      <button (click)="makeColumnsResizable()">Columnas movibles</button>
+    </td>
+
+    <td>
+      <button (click)="makeResizeExpandable()">Columnas expandibles</button>
+    </td>
+
+    <td>
+      <button ()
+    </td>
+
+
+  </tr>
+
 </table>

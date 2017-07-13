@@ -176,9 +176,19 @@ export class DatatableExampleComponent implements OnInit {
     });
   }
 
+  /**
+   * Este método sirve para cargar los datos de la entidad Post en el 
+   * DataTable.
+   */
   loadPostsData() {
     this.oDataService.getPosts().subscribe(aPosts => {
-      console.log(aPosts.json());
+      var aNewCols = [
+        { field: 'userId', header: 'ID USUARIO', sortable: true },
+        { field: 'title', header: 'TITULO', sortable: true }
+      ];
+      this.dt.columns = [];
+      this.addDataTableColumns(aNewCols);
+      this.aDataRows = aPosts.json();
     });
   }
 
@@ -188,8 +198,7 @@ export class DatatableExampleComponent implements OnInit {
    * @TODO: ¿Refactorizar estos métodos en uno solo?
    */
   loadAlbumsData() {
-    this.oDataService.getAlbums().subscribe(aAlbums => {
-      console.log(aAlbums.json());
+    this.oDataService.getAlbums().subscribe(aAlbums => {      
       var aNewCols = [
         { field: 'id', header: 'ID', sortable: true },
         { field: 'albumId', header: 'ALBUM ID', sortable: true },
@@ -219,4 +228,76 @@ export class DatatableExampleComponent implements OnInit {
       this.aDataRows = aPhotos.json();
     });
   }
+
+  /**
+   * Este método, privado, se usa para analizar la estructura de datos
+   * devuelta por una servicio REST que devuelva un array de objetos 
+   * @param oStruct La estructura de datos a analizar
+   */
+  private analyzeDataStructure(oStruct):Array<Object> {
+    var oReturn = [];
+    var iCols = 0;
+    for(var prop in oStruct) {
+      oReturn[iCols] = {};
+      oReturn[iCols].field = prop;
+      oReturn[iCols].header = prop;
+      oReturn[iCols].sortable = true;
+      iCols++;
+    }
+    return oReturn;
+  }
+
+
+  /**
+   * Este método sirve para cargar un array de objetos en el DataTable, de tal forma que
+   * sin necesidad de saber previamente la estructura de datos, solo con saber que es
+   * un array de objetos nos sirve para poder renderizarlo en en DataTable
+   * @param sURL La URL del servicio REST de la que se obtiene el Array de objetos
+   * a pintar en el DataTable
+   */
+  loadAnyData(sURL) {
+    this.oDataService.getAny(sURL).subscribe(aRawResult => {
+      var aResult = aRawResult.json();
+      if(aResult.length > 0) {
+        var aColumns = this.analyzeDataStructure(aResult[0]);
+        this.dt.columns = [];
+        this.addDataTableColumns(aColumns);
+        this.aDataRows = aResult;
+      } else {
+        throw {
+          message: 'LA ESTRUCTURA SUMINISTRADA NO ES UN ARRAY DE OBJETOS'
+        }
+      }
+    });
+  }
+
+  /**
+   * Este método hace que las columnas puedan volver a redimensionarse tras 
+   * alterar este valor llamando a makeColumnsUnresizable(). Es interesante
+   * que si no se especifica esta propiedad en el HTML del DataTable, ya no 
+   * se puede cambiar y setear.
+   */
+  makeColumnsResizable() {
+    this.dt.resizableColumns = true;
+  }
+
+  /**
+   * Este método hace que las columnas no se puedan redimensionar, asignando el 
+   * valor de la propiedad del DataTable .resizableColumns
+   */
+  makeColumnsUnresizable() {
+    this.dt.resizableColumns = false;
+  }
+
+
+  makeResizeExpandable() {
+    this.dt.columnResizeMode = 'expand';
+  }
+
+
+  makeResizeFit() {
+    this.dt.columnResizeMode = 'fit';
+  }
+
+
 }

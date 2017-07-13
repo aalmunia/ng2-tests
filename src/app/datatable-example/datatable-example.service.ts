@@ -33,6 +33,10 @@ export class DatatableExampleService {
     return this.oHTTP.get(this._baseURL + "users");
   }
 
+  getAny(sURL): Observable<any> {
+    return this.oHTTP.get(sURL);
+  }
+
   getSinglePost(idPost): Observable<any> {
     return this.oHTTP.get(this._baseURL + "posts/" + idPost);
   }
