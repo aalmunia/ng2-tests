@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# El tutorial
+/docs
+
 # dependencies
 /node_modules
 

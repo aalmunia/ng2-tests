@@ -289,15 +289,20 @@ export class DatatableExampleComponent implements OnInit {
     this.dt.resizableColumns = false;
   }
 
-
+  /**
+   * Este método sirve para que el redimensionamiento de las columnas se 
+   * puedan expandir mas allá del tamaño original del DataTable
+   */
   makeResizeExpandable() {
     this.dt.columnResizeMode = 'expand';
   }
 
-
+  /**
+   * Este método sirve para que el redimensionamiento de las columnas no
+   * altere el ancho total del DataTable
+   */
   makeResizeFit() {
     this.dt.columnResizeMode = 'fit';
   }
-
-
+  
 }
