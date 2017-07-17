@@ -5,7 +5,11 @@ import { DatatableExampleComponent } from './datatable-example/datatable-example
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponentComponent } from './welcome-component/welcome-component.component';
 import { HttpModule } from '@angular/http';
-import { DataTableModule,SharedModule, GrowlModule,ContextMenuModule } from 'primeng/primeng';
+import { DataTableModule, 
+         SharedModule, 
+         GrowlModule, 
+         ContextMenuModule,
+         BlockUIModule } from 'primeng/primeng';
 
 const aRutas : Routes = [
   { path: '', component: WelcomeComponentComponent },
@@ -24,6 +28,7 @@ const aRutas : Routes = [
     DataTableModule,
     GrowlModule,
     ContextMenuModule,
+    BlockUIModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

@@ -7,7 +7,8 @@ import {
   GrowlModule, 
   Message,
   ContextMenuModule,
-  MenuItem } from 'primeng/primeng';
+  MenuItem,
+  BlockUIModule } from 'primeng/primeng';
 
 @Component({
   selector: 'app-datatable-example',
@@ -28,6 +29,7 @@ export class DatatableExampleComponent implements OnInit {
    * Este es el array de filas de la DataTable
    */
   private aDataRows = [];
+  private blockedDataTable: boolean = false;
 
   /**
    * Esta estructura representa las opciones del menú contextual de la DataTable
@@ -64,9 +66,10 @@ export class DatatableExampleComponent implements OnInit {
    * para ponerlos en el DataTable.
    */
   ngOnInit() {
+    this.blockedDataTable = true;
     var oRequestObservable = this.oDataService.getPosts().subscribe(res => {
       this.aDataRows = res.json();
-      console.log(this.aDataRows[0]);
+      this.blockedDataTable = false;
     });
 
     /**
@@ -76,7 +79,7 @@ export class DatatableExampleComponent implements OnInit {
      * lo que hemos cambiado en la columna.
      * @TODO: Implementar componente Growl
      */
-    this.dt.onEditComplete.subscribe(oColumn => {      
+    this.dt.onEditComplete.subscribe(oColumn => {
       this.aGrowlMessages = [];     // De momento no se ocultan automáticamente, esto funciona
       this.aGrowlMessages.push({
         severity: 'info',
@@ -90,7 +93,8 @@ export class DatatableExampleComponent implements OnInit {
      * Esto es un manejador para el evento 'onSort' del DataTable. De la misma forma que antes,
      * mostramos un Growl con el mensaje
      */
-    this.dt.onSort.subscribe(oSort => {      
+    this.dt.onSort.subscribe(oSort => {
+      this.blockedDataTable = true;
       var sMessage = 'La DataTable ha sido ordenada, usando el campo ' + oSort.field + ' con ordenación ';
       if(oSort.order === 1) { sMessage += ' ascendente'; } else { sMessage += ' descendente'; }
       this.aGrowlMessages = [];
@@ -98,7 +102,8 @@ export class DatatableExampleComponent implements OnInit {
         severity: 'info',
         summary: 'Sort OK',
         detail: sMessage
-      });      
+      });
+      this.blockedDataTable = false;
     });
 
   }
@@ -111,10 +116,12 @@ export class DatatableExampleComponent implements OnInit {
    * @param aNewFields Array de objetos que indican nueva columna
    */
   alterDataTableColumns(aNewFields) {
+    this.blockedDataTable = true;
     for (var i = 0; i < aNewFields.length; i++) {
       this.dt.columns[i].field = aNewFields[i].fieldName;
       this.dt.columns[i].header = aNewFields[i].headerCaption;
     }
+    this.blockedDataTable = false;
   }
 
   /**
@@ -122,9 +129,11 @@ export class DatatableExampleComponent implements OnInit {
    * @param aNewColumns Array de columnas nuevas
    */
   addDataTableColumns(aNewColumns) {
+    this.blockedDataTable = true;
     for(var i = 0; i < aNewColumns.length; i++) {
       this.dt.columns.push(aNewColumns[i]);
     }
+    this.blockedDataTable = false;
   }
 
   /**
@@ -136,7 +145,9 @@ export class DatatableExampleComponent implements OnInit {
    * mas adelante.
    */
   removeDataTableColumns(iStart, iHowMany) {
-    this.dt.columns.splice(iStart, iHowMany);    
+    this.blockedDataTable = true;
+    this.dt.columns.splice(iStart, iHowMany);
+    this.blockedDataTable = false;
   }
 
   /**
@@ -163,6 +174,7 @@ export class DatatableExampleComponent implements OnInit {
    * directamente del JSON de datos de respuesta.
    */
   loadCommentsData() {
+    this.blockedDataTable = true;
     this.oDataService.getComments().subscribe(aComments => {
       var aNewCols = [
         { field: 'id', header: 'ID', sortable: true },
@@ -173,6 +185,7 @@ export class DatatableExampleComponent implements OnInit {
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);      
       this.aDataRows = aComments.json();
+      this.blockedDataTable = false;
     });
   }
 
@@ -181,6 +194,7 @@ export class DatatableExampleComponent implements OnInit {
    * DataTable.
    */
   loadPostsData() {
+    this.blockedDataTable = true;
     this.oDataService.getPosts().subscribe(aPosts => {
       var aNewCols = [
         { field: 'userId', header: 'ID USUARIO', sortable: true },
@@ -189,6 +203,7 @@ export class DatatableExampleComponent implements OnInit {
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
       this.aDataRows = aPosts.json();
+      this.blockedDataTable = false;
     });
   }
 
@@ -198,6 +213,7 @@ export class DatatableExampleComponent implements OnInit {
    * @TODO: ¿Refactorizar estos métodos en uno solo?
    */
   loadAlbumsData() {
+    this.blockedDataTable = true;
     this.oDataService.getAlbums().subscribe(aAlbums => {      
       var aNewCols = [
         { field: 'id', header: 'ID', sortable: true },
@@ -207,6 +223,7 @@ export class DatatableExampleComponent implements OnInit {
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
       this.aDataRows = aAlbums.json();
+      this.blockedDataTable = false;
     });
   }
 
@@ -215,6 +232,7 @@ export class DatatableExampleComponent implements OnInit {
    * a loadAlbumsData()
    */
   loadPhotosData() {
+    this.blockedDataTable = true;
     this.oDataService.getPhotos().subscribe(aPhotos => {
       var aNewCols = [
         { field: 'id', header: 'ID FOTO', sortable: true },
@@ -226,6 +244,7 @@ export class DatatableExampleComponent implements OnInit {
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
       this.aDataRows = aPhotos.json();
+      this.blockedDataTable = false;
     });
   }
 
@@ -256,6 +275,7 @@ export class DatatableExampleComponent implements OnInit {
    * a pintar en el DataTable
    */
   loadAnyData(sURL) {
+    this.blockedDataTable = true;
     this.oDataService.getAny(sURL).subscribe(aRawResult => {
       var aResult = aRawResult.json();
       if(aResult.length > 0) {
@@ -268,6 +288,7 @@ export class DatatableExampleComponent implements OnInit {
           message: 'LA ESTRUCTURA SUMINISTRADA NO ES UN ARRAY DE OBJETOS'
         }
       }
+      this.blockedDataTable = false;
     });
   }
 

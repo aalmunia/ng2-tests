@@ -1,4 +1,7 @@
 <p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
+<p-blockUI [target]="dt" [blocked]="blockedDataTable">  
+    <!-- <i class="fa fa-lock fa-5x" style="position:absolute;top:25%;left:50%"></i> -->
+</p-blockUI>
 <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
   selectionMode="single" resizableColumns="true">
   <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
@@ -8,9 +11,6 @@
 <br />
 <table width="100%">
   <tr>
-
-    <!-- 8 celdas por fila de momento -->
-    <!-- @TODO: Implementar grid de Bootstrap -->
 
     <td>
       <button (click)="alterDataTableColumns([
