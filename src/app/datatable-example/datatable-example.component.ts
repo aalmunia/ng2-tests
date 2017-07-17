@@ -1,4 +1,4 @@
-import { ViewChild, Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit, TemplateRef } from '@angular/core';
 import { DatatableExampleService } from './datatable-example.service';
 import { 
   DataTable, 
@@ -16,6 +16,13 @@ import {
   templateUrl: './datatable-example.component.html',
   styleUrls: ['./datatable-example.component.css']
 })
+
+/**
+ * Clase de componente de ejemplos de DataTable. Contiene el componente DataTable como un miembro de clase,
+ * y controla la funcionalidad del mismo a través de código JavaScript. La implementación de la interfaz
+ * OnInt conlleva que esta clase tiene que tener un método llamado ngOnInit(), que determina qué es lo
+ * que sucede cuando esta clase ha terminado de cargarse en el cliente.
+ */
 export class DatatableExampleComponent implements OnInit {
 
   /**
@@ -175,12 +182,13 @@ export class DatatableExampleComponent implements OnInit {
    */
   loadCommentsData() {
     this.blockedDataTable = true;
+    this.dt.exportFilename = "comments";
     this.oDataService.getComments().subscribe(aComments => {
       var aNewCols = [
-        { field: 'id', header: 'ID', sortable: true },
-        { field: 'postId', header: 'ID POST', sortable: true },
-        { field: 'email', header: 'EMAIL', sortable: true },
-        { field: 'body', header: 'BODY', sortable: true }
+        { field: 'id', header: 'ID', sortable: true, filter: true },
+        { field: 'postId', header: 'ID POST', sortable: true, filter: true },
+        { field: 'email', header: 'EMAIL', sortable: true, filter: true },
+        { field: 'body', header: 'BODY', sortable: true, filter: true }
       ]
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);      
@@ -195,10 +203,11 @@ export class DatatableExampleComponent implements OnInit {
    */
   loadPostsData() {
     this.blockedDataTable = true;
+    this.dt.exportFilename = "posts";
     this.oDataService.getPosts().subscribe(aPosts => {
       var aNewCols = [
-        { field: 'userId', header: 'ID USUARIO', sortable: true },
-        { field: 'title', header: 'TITULO', sortable: true }
+        { field: 'userId', header: 'ID USUARIO', sortable: true, filter: true },
+        { field: 'title', header: 'TITULO', sortable: true, filter: true }
       ];
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
@@ -214,11 +223,12 @@ export class DatatableExampleComponent implements OnInit {
    */
   loadAlbumsData() {
     this.blockedDataTable = true;
+    this.dt.exportFilename = "albums";
     this.oDataService.getAlbums().subscribe(aAlbums => {      
       var aNewCols = [
-        { field: 'id', header: 'ID', sortable: true },
-        { field: 'albumId', header: 'ALBUM ID', sortable: true },
-        { field: 'title', header: 'TITULO', sortable: true }
+        { field: 'id', header: 'ID', sortable: true, filter: true },
+        { field: 'albumId', header: 'ALBUM ID', sortable: true, filter: true },
+        { field: 'title', header: 'TITULO', sortable: true, filter: true }
       ];
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
@@ -233,13 +243,14 @@ export class DatatableExampleComponent implements OnInit {
    */
   loadPhotosData() {
     this.blockedDataTable = true;
+    this.dt.exportFilename = "photos";
     this.oDataService.getPhotos().subscribe(aPhotos => {
       var aNewCols = [
-        { field: 'id', header: 'ID FOTO', sortable: true },
-        { field: 'albumId', header: 'ID ALBUM', sortable: true },
-        { field: 'url', header: 'URL', sortable: true },
-        { field: 'thumbnailUrl', header: 'THUMBNAIL', sortable: true },
-        { field: 'title', header: 'TITULO', sortable: true }
+        { field: 'id', header: 'ID FOTO', sortable: true, filter: true },
+        { field: 'albumId', header: 'ID ALBUM', sortable: true, filter: true },
+        { field: 'url', header: 'URL', sortable: true, filter: true },
+        { field: 'thumbnailUrl', header: 'THUMBNAIL', sortable: true, filter: true },
+        { field: 'title', header: 'TITULO', sortable: true, filter: true }
       ];
       this.dt.columns = [];
       this.addDataTableColumns(aNewCols);
@@ -276,6 +287,7 @@ export class DatatableExampleComponent implements OnInit {
    */
   loadAnyData(sURL) {
     this.blockedDataTable = true;
+    this.dt.exportFilename = "anydata";
     this.oDataService.getAny(sURL).subscribe(aRawResult => {
       var aResult = aRawResult.json();
       if(aResult.length > 0) {
@@ -324,6 +336,16 @@ export class DatatableExampleComponent implements OnInit {
    */
   makeResizeFit() {
     this.dt.columnResizeMode = 'fit';
+  }
+
+
+  makeColumnsReordeable() {
+    this.dt.reorderableColumns = true;
+  }
+
+
+  makeColumnsUnreordable() {
+    this.dt.reorderableColumns = false;
   }
   
 }

@@ -1,4 +1,4 @@
-En este tutorial vamos a ver como usar el componente DataTable de la librería de componentes PrimeNG. Esta librería está basada en Prime Faces, muy usada en entornos JAVA / J2EE para frontend. Con el uso cada vez mayor de tecnologías de cliente como Angular, las soluciones basadas en backends muy fuertes que prerenderizan todo antes de enviarlo al cliente son cada vez menos usadas, debido a las alternativas que MEAN ofrece.
+En este tutorial vamos a ver como usar el componente DataTable de la librería de componentes PrimeNG. Esta librería está basada en Prime Faces, muy usada en entornos JAVA / J2EE para frontend. Con el uso cada vez mayor de tecnologías de cliente como Angular, las soluciones basadas en backends muy fuertes que prerenderizan todo antes de enviarlo al cliente son cada vez menos usadas, debido a las alternativas que MEAN ofrece. En vez de seguir usando jQuery junto con, por ejemplo, PHP, una solución basada en una capa de servicios JSON, escrita en NodeJS, y una capa de cliente, escrita en Angular es una solución muy óptima, como veremos a continuación.
 
 Código del tutorial: https://github.com/aalmunia/ng2-tests
 

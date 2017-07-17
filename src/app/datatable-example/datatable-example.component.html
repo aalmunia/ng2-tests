@@ -1,79 +1,99 @@
 <p-growl [(value)]="aGrowlMessages" life="2000"></p-growl>
-<p-blockUI [target]="dt" [blocked]="blockedDataTable">  
-    <!-- <i class="fa fa-lock fa-5x" style="position:absolute;top:25%;left:50%"></i> -->
-</p-blockUI>
-<p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
-  selectionMode="single" resizableColumns="true">
-  <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true"></p-column>
-  <p-column field="title" header="TITULO" [editable]="true" [sortable]="true"></p-column>
-</p-dataTable>
-<p-contextMenu #cm [model]="aContextualMenuItems" [styleClass]="detailContainer"></p-contextMenu>
-<br />
-<table width="100%">
-  <tr>
+<p-blockUI [target]="dt" [blocked]="blockedDataTable">
 
-    <td>
-      <button (click)="alterDataTableColumns([
+</p-blockUI>
+<div class="col-xs-12">
+  <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
+    selectionMode="single" resizableColumns="true" reorderableColumns="true" exportFilename="posts">
+    <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true" [filter]="true"></p-column>
+    <p-column field="title" header="TITULO" [editable]="true" [sortable]="true" [filter]="true"></p-column>
+  </p-dataTable>
+</div>
+<p-contextMenu #cm [model]="aContextualMenuItems" [styleClass]="detailContainer"></p-contextMenu>
+
+<div class="row">
+  <div class="col-xs-12">&nbsp;</div>
+</div>
+<div class="row">
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="alterDataTableColumns([
         { fieldName: 'body', headerCaption: 'CUERPO' },
         { fieldName: 'userId', headerCaption: 'ID USUARIO' }
       ])">Alterar Campos de tabla</button>
-    </td>
+  </div>
 
-    <td>
-      <button (click)="alterDataTableColumns([
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="alterDataTableColumns([
         { fieldName: 'userId', headerCaption: 'ID USUARIO' },
         { fieldName: 'title', headerCaption: 'TITULO' }
       ])">Revertir a campos originales</button>
-    </td>
+  </div>
 
-    <td>
-      <button (click)="addDataTableColumns([
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="addDataTableColumns([
       { field: 'body', header: 'CUERPO', sortable: true },
       { field: 'id', header: 'ID POST', sortable: true }
       ])">Agregar columnas</button>
-    </td>
+  </div>
 
-    <td>
-      <button (click)="removeDataTableColumns(2, 2)">Quitar columnas</button>
-    </td>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="removeDataTableColumns(2, 2)">Quitar columnas</button>
+  </div>
 
-    <td>
-      <button (click)="loadCommentsData()">Cargar comentarios</button>
-    </td>
+</div>
 
-    <td>
-      <button (click)="loadPhotosData()">Cargar Fotos</button>
-    </td>
+<div class="row">
 
-    <td>
-      <button (click)="loadAlbumsData()">Cargar Albumes</button>
-    </td>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="loadCommentsData()">Cargar comentarios</button>
+  </div>
 
-    <td>
-      <button (click)="loadAnyData('https://jsonplaceholder.typicode.com/todos')">Cargar datos varios</button>
-    </td>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="loadPhotosData()">Cargar Fotos</button>
+  </div>
 
-  </tr>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="loadAlbumsData()">Cargar Albumes</button>
+  </div>
 
-  <tr>
-    
-    <td>
-      <button (click)="makeColumnsUnresizable()">Columnas no movibles</button>
-    </td>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="loadAnyData('https://jsonplaceholder.typicode.com/todos')">Cargar datos varios</button>
+  </div>
 
-    <td>
-      <button (click)="makeColumnsResizable()">Columnas movibles</button>
-    </td>
+</div>
 
-    <td>
-      <button (click)="makeResizeExpandable()">Columnas expandibles</button>
-    </td>
+<div class="row">
 
-    <td>
-      <button (click)="makeResizeFit()">Columnas no expandibles</button>
-    </td>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeColumnsUnresizable()">Columnas no movibles</button>
+  </div>
 
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeColumnsResizable()">Columnas movibles</button>
+  </div>
 
-  </tr>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeResizeExpandable()">Columnas expandibles</button>
+  </div>
 
-</table>
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeResizeFit()">Columnas no expandibles</button>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeColumnsUnreordable()">Columnas no reordenables</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeColumnsReordable()">Columnas reordenables</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="this.dt.exportCSV()">Exportar datos a CSV</button>
+  </div>
+
+</div>

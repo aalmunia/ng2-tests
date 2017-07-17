@@ -1,3 +1,7 @@
 .detailContainer {
     width: 600px;
   }
+
+div.row {
+  line-height: 150%;
+}
