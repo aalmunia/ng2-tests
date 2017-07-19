@@ -2,13 +2,22 @@
 <p-blockUI [target]="dt" [blocked]="blockedDataTable">
 
 </p-blockUI>
-<div class="col-xs-12">
+<div class="col-xs-1">&nbsp;</div>
+<div class="col-xs-10">
+  <!-- @TODO: Quitar scroll horizontal de DataTable -->
   <p-dataTable #dt class="ui-datatable" [value]="aDataRows" [rows]="10" [paginator]="true" [editable]="true" [contextMenu]="cm"
-    selectionMode="single" resizableColumns="true" reorderableColumns="true" exportFilename="posts">
-    <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true" [filter]="true"></p-column>
-    <p-column field="title" header="TITULO" [editable]="true" [sortable]="true" [filter]="true"></p-column>
+    selectionMode="single" resizableColumns="true" reorderableColumns="true" exportFilename="posts" [responsive]="true" [stacked]="stacked">
+    <p-header>
+      <span style="font-family: monospace; font-size: 16pt; color: #FF0000; background-color: aquamarine;">Cabecera de DataTable</span>
+    </p-header>
+    <p-footer>
+      <span style="font-family: Impact; font-size: 18pt; color: #00FF00; background-color: darksalmon;">Pie de DataTable</span>
+    </p-footer>
+    <p-column field="userId" header="ID USUARIO" [editable]="true" [sortable]="true" [filter]="true" width="50%"></p-column>
+    <p-column field="title" header="TITULO" [editable]="true" [sortable]="true" [filter]="true" width="50%"></p-column>
   </p-dataTable>
 </div>
+<div class="col-xs-1">&nbsp;</div>
 <p-contextMenu #cm [model]="aContextualMenuItems" [styleClass]="detailContainer"></p-contextMenu>
 
 <div class="row">
@@ -94,6 +103,30 @@
 
   <div class="col-xs-3" align="center">
     <button class="btn-primary" (click)="this.dt.exportCSV()">Exportar datos a CSV</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeTableNotResponsive()">Quitar responsive a DataTable</button>      
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeTableResponsive()">Hacer DataTable responsive</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeTableNotStacked()">Quitar apilamiento columnas</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    <button class="btn-primary" (click)="makeTableStacked()">Usar apilamiento columnas</button>
+  </div>
+
+  <div class="col-xs-3" align="center">
+    &nbsp;
   </div>
 
 </div>

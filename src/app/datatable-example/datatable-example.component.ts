@@ -1,14 +1,15 @@
 import { ViewChild, Component, OnInit, TemplateRef } from '@angular/core';
 import { DatatableExampleService } from './datatable-example.service';
-import { 
-  DataTable, 
-  DataTableModule, 
-  SharedModule, 
-  GrowlModule, 
+import {
+  DataTable,
+  DataTableModule,
+  SharedModule,
+  GrowlModule,
   Message,
   ContextMenuModule,
   MenuItem,
-  BlockUIModule } from 'primeng/primeng';
+  BlockUIModule
+} from 'primeng/primeng';
 
 @Component({
   selector: 'app-datatable-example',
@@ -46,15 +47,21 @@ export class DatatableExampleComponent implements OnInit {
    * la opción de menú.
    */
   private aContextualMenuItems: MenuItem[] = [
-    { label: 'Mostrar detalle en consola', icon: 'fa-plus', command: (event) => { 
-      console.log('Opcion 1 pulsada') 
-    }},
-    { label: 'Mostrar detalle en Growl', icon: 'fa-mail-reply', command: (event) => { 
-      this.showDetailInGrowl(this.dt.selection);      
-    }},
-    { label: 'Opcion 3', icon: 'fa-mail-forward', command: (event) => {
-      console.log('Opcion 3 pulsada') 
-    }}
+    {
+      label: 'Mostrar detalle en consola', icon: 'fa-plus', command: (event) => {
+        console.log('Opcion 1 pulsada')
+      }
+    },
+    {
+      label: 'Mostrar detalle en Growl', icon: 'fa-mail-reply', command: (event) => {
+        this.showDetailInGrowl(this.dt.selection);
+      }
+    },
+    {
+      label: 'Opcion 3', icon: 'fa-mail-forward', command: (event) => {
+        console.log('Opcion 3 pulsada')
+      }
+    }
   ];
 
   /**
@@ -103,7 +110,7 @@ export class DatatableExampleComponent implements OnInit {
     this.dt.onSort.subscribe(oSort => {
       this.blockedDataTable = true;
       var sMessage = 'La DataTable ha sido ordenada, usando el campo ' + oSort.field + ' con ordenación ';
-      if(oSort.order === 1) { sMessage += ' ascendente'; } else { sMessage += ' descendente'; }
+      if (oSort.order === 1) { sMessage += ' ascendente'; } else { sMessage += ' descendente'; }
       this.aGrowlMessages = [];
       this.aGrowlMessages.push({
         severity: 'info',
@@ -137,7 +144,7 @@ export class DatatableExampleComponent implements OnInit {
    */
   addDataTableColumns(aNewColumns) {
     this.blockedDataTable = true;
-    for(var i = 0; i < aNewColumns.length; i++) {
+    for (var i = 0; i < aNewColumns.length; i++) {
       this.dt.columns.push(aNewColumns[i]);
     }
     this.blockedDataTable = false;
@@ -164,7 +171,7 @@ export class DatatableExampleComponent implements OnInit {
   showDetailInGrowl(oRow) {
     this.aGrowlMessages = [];
     this.aGrowlMessages.push({
-      severity: 'info', 
+      severity: 'info',
       summary: 'Detalle fila',
       detail: JSON.stringify(oRow)
     });
@@ -191,7 +198,7 @@ export class DatatableExampleComponent implements OnInit {
         { field: 'body', header: 'BODY', sortable: true, filter: true }
       ]
       this.dt.columns = [];
-      this.addDataTableColumns(aNewCols);      
+      this.addDataTableColumns(aNewCols);
       this.aDataRows = aComments.json();
       this.blockedDataTable = false;
     });
@@ -224,7 +231,7 @@ export class DatatableExampleComponent implements OnInit {
   loadAlbumsData() {
     this.blockedDataTable = true;
     this.dt.exportFilename = "albums";
-    this.oDataService.getAlbums().subscribe(aAlbums => {      
+    this.oDataService.getAlbums().subscribe(aAlbums => {
       var aNewCols = [
         { field: 'id', header: 'ID', sortable: true, filter: true },
         { field: 'albumId', header: 'ALBUM ID', sortable: true, filter: true },
@@ -264,10 +271,10 @@ export class DatatableExampleComponent implements OnInit {
    * devuelta por una servicio REST que devuelva un array de objetos 
    * @param oStruct La estructura de datos a analizar
    */
-  private analyzeDataStructure(oStruct):Array<Object> {
+  private analyzeDataStructure(oStruct): Array<Object> {
     var oReturn = [];
     var iCols = 0;
-    for(var prop in oStruct) {
+    for (var prop in oStruct) {
       oReturn[iCols] = {};
       oReturn[iCols].field = prop;
       oReturn[iCols].header = prop;
@@ -290,7 +297,7 @@ export class DatatableExampleComponent implements OnInit {
     this.dt.exportFilename = "anydata";
     this.oDataService.getAny(sURL).subscribe(aRawResult => {
       var aResult = aRawResult.json();
-      if(aResult.length > 0) {
+      if (aResult.length > 0) {
         var aColumns = this.analyzeDataStructure(aResult[0]);
         this.dt.columns = [];
         this.addDataTableColumns(aColumns);
@@ -338,14 +345,51 @@ export class DatatableExampleComponent implements OnInit {
     this.dt.columnResizeMode = 'fit';
   }
 
-
+  /**
+   * Este método sirve para que las columnas puedan reordenarse arrastrando sus nombres.
+   * Para que la funcionalidad se aprecie, hay que llamar antes a makeColumnsUnreordable()
+   * para alterar la propiedad que viene por defecto en el DataTable
+   */
   makeColumnsReordeable() {
     this.dt.reorderableColumns = true;
   }
 
-
+  /**
+   * Este método sirve para que las columnas no puedan reordenarse.
+   */
   makeColumnsUnreordable() {
     this.dt.reorderableColumns = false;
   }
-  
+
+  /**
+   * Este método sirve para que la DataTable se comporte de forma responsive si el tamaño
+   * del cliente así lo exige. Al combinar con la propiedad [stacked] del DataTable se configura
+   * el renderizado.
+   */
+  makeTableResponsive() {
+    this.dt.responsive = true;
+  }
+
+  /**
+   * Este método sirve para quitar el responsive del DataTable
+   */
+  makeTableNotResponsive() {
+    this.dt.responsive = false;
+  }
+
+  /**
+   * Este método sirve para quitar la capacidad de apilamiento de columnas en
+   * el modo responsive en el que no hay ancho de pantalla pero si alto (móvil vertical, p. ej.)
+   */
+  makeTableNotStacked() {
+    this.dt.stacked = false;
+  }
+
+  /**
+   * Este método rehace el apilamiento de columnas, en caso de que estuviese desactivado
+   */
+  makeTableStacked() {
+    this.dt.stacked = true;
+  }
+
 }

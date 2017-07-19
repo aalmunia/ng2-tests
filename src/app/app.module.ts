@@ -9,18 +9,22 @@ import { DataTableModule,
          SharedModule, 
          GrowlModule, 
          ContextMenuModule,
-         BlockUIModule } from 'primeng/primeng';
+         BlockUIModule, 
+         GMapModule } from 'primeng/primeng';
+import { GmapExampleComponent } from './gmap-example/gmap-example.component';
 
 const aRutas : Routes = [
   { path: '', component: WelcomeComponentComponent },
-  { path: 'datatable', component: DatatableExampleComponent }
+  { path: 'datatable', component: DatatableExampleComponent },
+  { path: 'googlemap', component: GmapExampleComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     DatatableExampleComponent,
-    WelcomeComponentComponent
+    WelcomeComponentComponent,
+    GmapExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ const aRutas : Routes = [
     GrowlModule,
     ContextMenuModule,
     BlockUIModule,
+    GMapModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],
