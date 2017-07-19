@@ -23,13 +23,50 @@ export class GmapExampleComponent implements OnInit {
     this.overlaysGoogleMap = [];
   }
 
-  addMarker() {
+  addBounceMarker() {
     this.overlaysGoogleMap.push(
       new google.maps.Marker(
         {
           position: {lat: 40.4758712, lng: -3.6408071}, 
           title:"Calle Repelon",
           animation: google.maps.Animation.BOUNCE
+        }
+      )
+    );
+  }
+
+
+  addDropMarker() {
+    this.overlaysGoogleMap.push(
+      new google.maps.Marker(
+        {
+          position: { lat: 40.4665899, lng: -3.6413987 },
+          title: "Carretera de Canillas, 115",
+          animation: google.maps.Animation.DROP
+        }
+      )
+    );
+  }
+
+
+  removeLastMarker() {
+    if(this.overlaysGoogleMap.length > 0) {
+      this.overlaysGoogleMap.splice( (this.overlaysGoogleMap.length) - 1, 1 );
+    }
+  }
+
+
+  removeAllMarkers() {
+    this.overlaysGoogleMap = [];
+  }
+
+
+  addInfoWindow() {
+    this.overlaysGoogleMap.push(
+      new google.maps.InfoWindow(
+        {
+          position: { lat: 40.4665899, lng: -3.6413987 },
+          content: "Esto es el texto de la ventana de informacion"
         }
       )
     );

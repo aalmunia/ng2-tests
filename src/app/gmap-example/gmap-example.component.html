@@ -6,21 +6,36 @@
 
 <div class="row">
   <div class="col-xs-12">
-  <p-gmap [options]="optionsGoogleMap" [overlays]="overlaysGoogleMap" [style]="{'width':'100%','height':'450px'}" (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)"></p-gmap>
+  <p-gmap #mygmap [options]="optionsGoogleMap" [overlays]="overlaysGoogleMap" [style]="{'width':'100%','height':'450px'}" (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)"></p-gmap>
 </div>
 </div>
 
 <div class="row">
   <div class="col-xs-3">
-    <button class="btn-primary" (click)="addMarker()">Marcador Bounce </button>
+    <button class="btn-primary" (click)="addBounceMarker()">Marcador 'BOUNCE'</button>
   </div>
   <div class="col-xs-3">
-
+    <button class="btn-primary" (click)="addDropMarker()">Marcador 'DROP'</button>
   </div>
   <div class="col-xs-3">
-
+    <button class="btn-primary" (click)="removeLastMarker()">Quitar último marcador</button>
   </div>
   <div class="col-xs-3">
+    <button class="btn-primary" (click)="removeAllMarkers()">Quitar todos los marcadores</button>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-xs-3">
+    <button class="btn-primary" (click)="addInfoWindow()">Agreagr ventana Info</button>    
+  </div>
+  <div class="col-xs-3">
+    
+  </div>
+  <div class="col-xs-3">
+    
+  </div>
+  <div class="col-xs-3">
+    
   </div>
 </div>
