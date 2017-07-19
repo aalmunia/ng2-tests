@@ -1,6 +1,26 @@
 <div class="row">
+  <div class=" col-xs-12">
 <p>Este es el componente de Google Maps, que además de integrarse con el API de Google, contiene una serie de funcionalidades directamente en el componente, sin necesidad de llamar al API.</p>
 </div>
+</div>
+
 <div class="row">
-  <p-gmap [options]="optionsGoogleMap" [style]="{'width':'100%','height':'450px'}" ></p-gmap>
+  <div class="col-xs-12">
+  <p-gmap [options]="optionsGoogleMap" [overlays]="overlaysGoogleMap" [style]="{'width':'100%','height':'450px'}" (onMapClick)="handleMapClick($event)" (onOverlayClick)="handleOverlayClick($event)"></p-gmap>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3">
+    <button class="btn-primary" (click)="addMarker()">Marcador Bounce </button>
+  </div>
+  <div class="col-xs-3">
+
+  </div>
+  <div class="col-xs-3">
+
+  </div>
+  <div class="col-xs-3">
+
+  </div>
 </div>
