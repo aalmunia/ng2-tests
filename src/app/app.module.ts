@@ -10,8 +10,12 @@ import { DataTableModule,
          GrowlModule, 
          ContextMenuModule,
          BlockUIModule, 
-         GMapModule } from 'primeng/primeng';
+         GMapModule,
+         OrganizationChartModule,
+         TreeNode } from 'primeng/primeng';
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
+import { OrgchartExampleComponent } from './orgchart-example/orgchart-example.component';
+
 
 const aRutas : Routes = [
   { path: '', component: WelcomeComponentComponent },
@@ -24,7 +28,8 @@ const aRutas : Routes = [
     AppComponent,
     DatatableExampleComponent,
     WelcomeComponentComponent,
-    GmapExampleComponent
+    GmapExampleComponent,
+    OrgchartExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ const aRutas : Routes = [
     ContextMenuModule,
     BlockUIModule,
     GMapModule,
+    OrganizationChartModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],
