@@ -11,20 +11,23 @@ import { DataTableModule,
          BlockUIModule, 
          GMapModule,
          OrganizationChartModule,
-         TreeNode } from 'primeng/primeng';
+         TreeNode,
+         TreeModule } from 'primeng/primeng';
 
 // Example components imports
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
 import { WelcomeComponentComponent } from './welcome-component/welcome-component.component';
 import { DatatableExampleComponent } from './datatable-example/datatable-example.component';
 import { OrgchartExampleComponent } from './orgchart-example/orgchart-example.component';
+import { TreeExampleComponent } from './tree-example/tree-example.component';
 
 
 const aRutas : Routes = [
   { path: '', component: WelcomeComponentComponent },
   { path: 'datatable', component: DatatableExampleComponent },
   { path: 'googlemap', component: GmapExampleComponent },
-  { path: 'orgchart', component: OrgchartExampleComponent }
+  { path: 'orgchart', component: OrgchartExampleComponent },
+  { path: 'tree', component: TreeExampleComponent }
 ];
 
 @NgModule({
@@ -33,7 +36,8 @@ const aRutas : Routes = [
     DatatableExampleComponent,
     WelcomeComponentComponent,
     GmapExampleComponent,
-    OrgchartExampleComponent
+    OrgchartExampleComponent,
+    TreeExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ const aRutas : Routes = [
     GMapModule,
     OrganizationChartModule,
     BrowserAnimationsModule,
+    TreeModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

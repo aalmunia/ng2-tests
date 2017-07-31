@@ -18,6 +18,7 @@ export class OrgchartExampleComponent implements OnInit {
 
     this.data = [{
       label: 'Root',
+      expanded: true,
       children: [
         {
           label: 'Child 1',
