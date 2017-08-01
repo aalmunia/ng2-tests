@@ -1,1 +1,12 @@
-<p-tree [value]="mockTreeData"></p-tree>
+<h4>Árbol de selección única</h4>
+<p-tree #myTree [value]="mockTreeData" selectionMode="single" [(selection)]="treeSelectedNode" 
+ (onNodeSelect)="showSelectedNode($event)"></p-tree>
+<br/>
+<!-- @TODO: Que no aparezca vacia -->
+<div><pre>{{ nodeSelected }}</pre></div>
+
+<p-tree [value]="mockTreeData2" selectionMode="checkbox" [(selection)]="treeSelectedNodes2" 
+ (onNodeSelect)="showSelectedNodes($event)"></p-tree>
+
+<p-tree [value]="mockTreeData3" selectionMode="multiple" [(selection)]="treeSelectedNodes3" 
+ (onNodeSelect)="showSelectedNodesMultiple($event)"></p-tree>

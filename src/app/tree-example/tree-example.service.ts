@@ -50,8 +50,7 @@ export class TreeExampleService {
         label: this.randomText(),
         data: this.randomText(),
         expandedIcon: 'fa-folder-open',
-        collapsedIcon: 'fa-folder',
-        expanded: true,
+        collapsedIcon: 'fa-folder',        
         children: this.generateChildNodeArray(iChildren)
       };
 
