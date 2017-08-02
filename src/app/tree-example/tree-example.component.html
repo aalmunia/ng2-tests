@@ -1,12 +1,19 @@
 <h4>Árbol de selección única</h4>
-<p-tree #myTree [value]="mockTreeData" selectionMode="single" [(selection)]="treeSelectedNode" 
- (onNodeSelect)="showSelectedNode($event)"></p-tree>
-<br/>
-<!-- @TODO: Que no aparezca vacia -->
-<div><pre>{{ nodeSelected }}</pre></div>
+<p-tree #myTree [value]="mockTreeData" selectionMode="single" [(selection)]="treeSelectedNode" (onNodeSelect)="showSelectedNode($event)"></p-tree>
+<span><pre>{{ nodeSelected }}</pre></span>
+<br />
 
-<p-tree [value]="mockTreeData2" selectionMode="checkbox" [(selection)]="treeSelectedNodes2" 
- (onNodeSelect)="showSelectedNodes($event)"></p-tree>
+<h4>Árbol de seleccióm múltiple (checkbox)</h4>
+<p-tree [value]="mockTreeData2" selectionMode="checkbox" [(selection)]="treeSelectedNodes2" (onNodeSelect)="showSelectedNodes($event)"></p-tree>
+<span><pre>{{ strNodesSelectedTree2 }}</pre></span>
+<br />
 
-<p-tree [value]="mockTreeData3" selectionMode="multiple" [(selection)]="treeSelectedNodes3" 
- (onNodeSelect)="showSelectedNodesMultiple($event)"></p-tree>
+<h4>Árbol de selección mútiple (Tecla Control)</h4>
+<p-tree [value]="mockTreeData3" selectionMode="multiple" [(selection)]="treeSelectedNodes3" (onNodeSelect)="showSelectedNodesMultiple($event)"></p-tree>
+<span><pre>{{ strNodesSelectedTree3 }}</pre></span>
+<br />
+
+<h4>Árbol con menú contextual para cada elemento</h4>
+<p-tree [value]="dataTreeContextMenu" [contextMenu]="cm" selectionMode="single" [(selection)]="treeContextualSelectedNodes"></p-tree>
+
+<p-contextMenu #cm [model]="itemsContextMenu"></p-contextMenu>

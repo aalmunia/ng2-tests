@@ -7,7 +7,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TreeExampleService {
 
+  private oParentComponent: any;
+
   constructor() { }
+
+  assignParentComponent(oParentComponent) {
+    this.oParentComponent = oParentComponent;
+  }
 
   randomText() {
     var text = "";
@@ -57,6 +63,89 @@ export class TreeExampleService {
     }
 
     return aReturn;
+  }
+
+
+  getContextualMenuData() {
+    return [
+      {
+        label: 'File',
+        icon: 'fa-folder',
+        items: [
+          {
+            label: 'Open',
+            icon: 'fa-file',
+            command: (event) => {
+              console.log('Open');
+            }
+          },
+          {
+            label: 'Save',
+            icon: 'fa-suitcase',
+            command: (event) => {
+              console.log('Save');
+            }
+          },
+          {
+            label: 'Close',
+            icon: 'fa-window-close',
+            command: (event) => {
+              console.log('Close');
+            }
+          }
+        ]
+      },
+      {
+        label: 'Edit',
+        icon: 'fa-edit',
+        items: [
+          {
+            label: 'Copy',
+            icon: 'fa-files-o',
+            command: (event) => {
+              console.log(this);
+              console.log(event);
+            }
+          },
+          {
+            label: 'Cut',
+            icon: 'fa-scissors',
+            command: (event) => {
+              console.log('Cut');
+              console.log(this.oParentComponent);
+              /**
+               * Para referenciar una propiedad, esto me vale...
+               * A ver como diablos referencio un método y no me cepillo
+               * el contexto this.
+               */
+              console.log(this.oParentComponent.treeContextualSelectedNodes);
+            }
+          },
+          {
+            label: 'Paste',
+            icon: 'fa-clipboard',
+            loquesea: 'Datos detesteo',
+            command: (event) => {
+              console.log(event.item.loquesea);
+            }
+          }
+        ]
+      },
+      {
+        label: 'Project',
+        icon: 'fa-code',
+        items: [
+          {
+            label: 'Compile',
+            icon: 'fa-space-shuttle'
+          },
+          {
+            label: 'Run',
+            icon: 'fa-ship'
+          }
+        ]
+      }
+    ];
   }
 
 }

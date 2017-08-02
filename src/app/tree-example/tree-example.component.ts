@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeExampleService } from './tree-example.service';
 import { TreeModule,TreeNode } from 'primeng/primeng';
+import { ContextMenuModule,MenuItem } from 'primeng/primeng';
 
 @Component({
   selector: 'app-tree-example',
@@ -16,29 +17,53 @@ export class TreeExampleComponent implements OnInit {
   private treeSelectedNode: TreeNode;
   private treeSelectedNodes2: TreeNode[];
   private treeSelectedNodes3: TreeNode[];
+  private dataTreeContextMenu: TreeNode[];
+  private treeContextualSelectedNodes: TreeNode[];
   private nodeSelected = '';
+  private strNodesSelectedTree2 = '';
+  private strNodesSelectedTree3 = '';
+
+  private itemsContextMenu: MenuItem[];
+
+  private testFunc() {
+    console.log(this);
+  }
 
   constructor(private oDataService: TreeExampleService) { }
 
   ngOnInit() {
+    this.oDataService.assignParentComponent(this);
     this.mockTreeData = this.oDataService.getMockData();
     this.mockTreeData2 = this.oDataService.getMockData();
-    this.mockTreeData3 = this.oDataService.getMockData();   
+    this.mockTreeData3 = this.oDataService.getMockData();
+    this.dataTreeContextMenu = this.oDataService.getMockData();
+    this.itemsContextMenu = this.oDataService.getContextualMenuData();    
+  }
+
+  renderNode(oNode) {
+    var sReturn  =  "NODO SELECCIONADO: \n";
+    sReturn += "LABEL: " + oNode.label + "\n";
+    sReturn += "DATA: " + oNode.data;
+    return sReturn;
   }
 
   showSelectedNode(oEvent) {
-    // this.nodeSelected = JSON.stringify(this.treeSelectedNode);
-    this.nodeSelected =  "NODO SELECCIONADO: \n";
-    this.nodeSelected += "LABEL: " + this.treeSelectedNode.label + "\n";
-    this.nodeSelected += "DATA: " + this.treeSelectedNode.data;    
+    this.nodeSelected = this.renderNode(this.treeSelectedNode);
   }
 
   showSelectedNodes(oEvent) {
-    console.log(this.treeSelectedNodes2);
+    this.strNodesSelectedTree2 = '';
+    for(var i = 0; i < this.treeSelectedNodes2.length; i++) {
+      this.strNodesSelectedTree2 += this.renderNode(this.treeSelectedNodes2[i]);
+      this.strNodesSelectedTree2 += "\n";
+    }
   }
 
   showSelectedNodesMultiple(oEvent) {
-    console.log(this.treeSelectedNodes3);
+    this.strNodesSelectedTree3 = '';
+    for(var i = 0; i < this.treeSelectedNodes3.length; i++) {
+      this.strNodesSelectedTree3 += this.renderNode(this.treeSelectedNodes3[i]);
+      this.strNodesSelectedTree3 += "\n";
+    }
   }
-
 }
