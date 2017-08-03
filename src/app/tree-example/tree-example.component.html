@@ -1,3 +1,8 @@
+<p class="backToInit">
+  <a [routerLink]="['/']">Inicio</a>
+</p>
+<hr /><br />
+
 <h4>Árbol de selección única</h4>
 <p-tree #myTree [value]="mockTreeData" selectionMode="single" [(selection)]="treeSelectedNode" (onNodeSelect)="showSelectedNode($event)"></p-tree>
 <span><pre>{{ nodeSelected }}</pre></span>

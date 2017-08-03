@@ -1,3 +1,24 @@
-<p>
-  menu-example works!
+<p class="backToInit">
+  <a [routerLink]="['/']">Inicio</a>
 </p>
+<hr /><br />
+
+<h4>Menú de barra horizontal</h4>
+<p-menubar #menu [model]="standardMenuItems"></p-menubar>
+<hr />
+
+<h4>Menú Slide lateral</h4>
+<p-slideMenu [model]="standardMenuItems"></p-slideMenu>
+<hr />
+
+<h4>Menú enlazado</h4>
+<p-tieredMenu [model]="standardMenuItems"></p-tieredMenu>
+<hr />
+
+<h4>Menú de tabs</h4>
+<p-tabMenu [model]="tabbedMenuItems"></p-tabMenu>
+<hr />
+
+<h4>Menú de dos niveles</h4>
+<p-menu [model]="twoLevelsMenuItems"></p-menu>
+
