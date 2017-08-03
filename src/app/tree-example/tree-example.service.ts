@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
-/**
- * @todo: Revisar CSS a ver por qué no aparecen los iconos de despliegue.
- */
 
 @Injectable()
 export class TreeExampleService {
 
   private oParentComponent: any;
+  public someEvent = new Subject();
 
   constructor() { }
 
@@ -19,8 +18,9 @@ export class TreeExampleService {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 10; i++)
+    for (var i = 0; i < 10; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
     return text;
   }
@@ -50,7 +50,7 @@ export class TreeExampleService {
 
     for (var i = 0; i < iNodes; i++) {
 
-      var iChildren = this.getRandomInt(2, 3);
+      var iChildren = this.getRandomInt(4, 7);
 
       aReturn[i] = {
         label: this.randomText(),
@@ -117,8 +117,16 @@ export class TreeExampleService {
                * Para referenciar una propiedad, esto me vale...
                * A ver como diablos referencio un método y no me cepillo
                * el contexto this.
+               * Teóricamente hay que usar un servicio para esto, pero no
+               * tengo demasiado claro como...
                */
               console.log(this.oParentComponent.treeContextualSelectedNodes);
+              console.log(this.someEvent);
+              /* for(var prop in this.oParentComponent) {
+                console.log('Nombre de propiedad: ' + prop);
+                console.log('Valor de propiedad: ');
+                console.log(this.oParentComponent[prop]);
+              } */
             }
           },
           {
@@ -137,15 +145,36 @@ export class TreeExampleService {
         items: [
           {
             label: 'Compile',
-            icon: 'fa-space-shuttle'
+            icon: 'fa-space-shuttle',
+            command: (event) => {
+              console.log('Space Age Compilator...');
+            }
           },
           {
             label: 'Run',
-            icon: 'fa-ship'
+            icon: 'fa-ship',
+            command: (event) => {
+              console.log('Run like hell and dont look back');
+            }
           }
         ]
       }
     ];
   }
+
+
+  getMultipleMenuData() {
+    return [
+      {
+        label: 'TestOption',
+        icon: 'fa-spaceship',
+        command: (event) => {
+          console.log('To boldly go where no one has gone before...');
+          console.log(this.oParentComponent.multipleTreeContextualSelectedNodes);
+        }
+      }
+    ]
+  }
+
 
 }

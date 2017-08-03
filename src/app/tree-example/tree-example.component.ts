@@ -14,22 +14,29 @@ export class TreeExampleComponent implements OnInit {
   private mockTreeData:TreeNode[];
   private mockTreeData2: TreeNode[];
   private mockTreeData3: TreeNode[];
+  private dataTreeContextMenu: TreeNode[];
+  private multipleDataTreeContextMenu: TreeNode[];
+
   private treeSelectedNode: TreeNode;
   private treeSelectedNodes2: TreeNode[];
-  private treeSelectedNodes3: TreeNode[];
-  private dataTreeContextMenu: TreeNode[];
+  private treeSelectedNodes3: TreeNode[];  
   private treeContextualSelectedNodes: TreeNode[];
+  private multipleTreeContextualSelectedNodes: TreeNode[];
+
   private nodeSelected = '';
   private strNodesSelectedTree2 = '';
   private strNodesSelectedTree3 = '';
 
   private itemsContextMenu: MenuItem[];
+  private multipleItemsContextMenu: MenuItem[];
 
-  private testFunc() {
-    console.log(this);
+  testFunc() {
+    console.log('testFunc');
   }
 
-  constructor(private oDataService: TreeExampleService) { }
+  constructor(private oDataService: TreeExampleService) {
+    oDataService.someEvent.subscribe(value => this.testFunc());
+   }
 
   ngOnInit() {
     this.oDataService.assignParentComponent(this);
@@ -37,7 +44,10 @@ export class TreeExampleComponent implements OnInit {
     this.mockTreeData2 = this.oDataService.getMockData();
     this.mockTreeData3 = this.oDataService.getMockData();
     this.dataTreeContextMenu = this.oDataService.getMockData();
-    this.itemsContextMenu = this.oDataService.getContextualMenuData();    
+    this.multipleDataTreeContextMenu = this.oDataService.getMockData();
+
+    this.itemsContextMenu = this.oDataService.getContextualMenuData();  
+    this.multipleItemsContextMenu = this.oDataService.getMultipleMenuData();
   }
 
   renderNode(oNode) {

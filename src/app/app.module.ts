@@ -12,7 +12,8 @@ import { DataTableModule,
          GMapModule,
          OrganizationChartModule,
          TreeNode,
-         TreeModule } from 'primeng/primeng';
+         TreeModule,
+         MegaMenuModule } from 'primeng/primeng';
 
 // Example components imports
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
@@ -20,6 +21,7 @@ import { WelcomeComponentComponent } from './welcome-component/welcome-component
 import { DatatableExampleComponent } from './datatable-example/datatable-example.component';
 import { OrgchartExampleComponent } from './orgchart-example/orgchart-example.component';
 import { TreeExampleComponent } from './tree-example/tree-example.component';
+import { MenuExampleComponent } from './menu-example/menu-example.component';
 
 
 const aRutas : Routes = [
@@ -37,7 +39,8 @@ const aRutas : Routes = [
     WelcomeComponentComponent,
     GmapExampleComponent,
     OrgchartExampleComponent,
-    TreeExampleComponent
+    TreeExampleComponent,
+    MenuExampleComponent
   ],
   imports: [
     BrowserModule,

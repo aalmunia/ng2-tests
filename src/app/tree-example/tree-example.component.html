@@ -15,5 +15,8 @@
 
 <h4>Árbol con menú contextual para cada elemento</h4>
 <p-tree [value]="dataTreeContextMenu" [contextMenu]="cm" selectionMode="single" [(selection)]="treeContextualSelectedNodes"></p-tree>
-
 <p-contextMenu #cm [model]="itemsContextMenu"></p-contextMenu>
+
+<h4>Árbol con menú contextual para múltiples elementos</h4>
+<p-tree [value]="multipleDataTreeContextMenu" [contextMenu]="cmMultiple" selectionMode="multiple" [(selection)]="multipleTreeContextualSelectedNodes"></p-tree>
+<p-contextMenu #cmMultiple [model]="multipleItemsContextMenu"></p-contextMenu>
