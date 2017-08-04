@@ -20,7 +20,8 @@ import { DataTableModule,
          TieredMenuModule,
          TabMenuModule,
          ChartModule,
-         GalleriaModule } from 'primeng/primeng';
+         GalleriaModule,
+         CodeHighlighterModule } from 'primeng/primeng';
 
 // Example components imports
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
@@ -31,6 +32,7 @@ import { TreeExampleComponent } from './tree-example/tree-example.component';
 import { MenuExampleComponent } from './menu-example/menu-example.component';
 import { ChartExampleComponent } from './chart-example/chart-example.component';
 import { GalleriaExampleComponent } from './galleria-example/galleria-example.component';
+import { CodeHighlightExampleComponent } from './code-highlight-example/code-highlight-example.component';
 
 
 const aRutas : Routes = [
@@ -42,7 +44,8 @@ const aRutas : Routes = [
   { path: 'tree', component: TreeExampleComponent },
   { path: 'menu', component: MenuExampleComponent },
   { path: 'chart', component: ChartExampleComponent },
-  { path: 'galleria', component: GalleriaExampleComponent }
+  { path: 'galleria', component: GalleriaExampleComponent },
+  { path: 'code-highlight', component: CodeHighlightExampleComponent }
 ];
 
 @NgModule({
@@ -55,7 +58,8 @@ const aRutas : Routes = [
     TreeExampleComponent,
     MenuExampleComponent,
     ChartExampleComponent,
-    GalleriaExampleComponent
+    GalleriaExampleComponent,
+    CodeHighlightExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,7 @@ const aRutas : Routes = [
     TabMenuModule,
     ChartModule,
     GalleriaModule,
+    CodeHighlighterModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],
