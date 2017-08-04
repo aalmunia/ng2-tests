@@ -1,11 +1,92 @@
 <div class="row">
   <div class="col-xs-12">
-    <p-chart type="line" [data]="oChartData"></p-chart>
+    <p class="backToInit">
+      <a [routerLink]="['/']">Inicio</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de líneas</h4>
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12">
-    
+    <p-chart type="line" [data]="oLineChartData"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de barras</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="bar" [data]="oBarChartData" [options]="oBarChartOptions"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de radar</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="radar" [data]="oRadarChartData"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de quesitos (Pie)</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="pie" [data]="oPieChartData"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de donut (Doughnut)</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="doughnut" [data]="oDonutChartData"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de área polar</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="polarArea" [data]="oPolarChartData"></p-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Gráfica de tipo burbujas</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-chart type="bubble" [data]="oBubbleChartData"></p-chart>
   </div>
 </div>

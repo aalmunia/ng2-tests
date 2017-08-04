@@ -1,3 +1,12 @@
 p.backToInit {
     text-align: right;
+    color: red;
+    font-family: "Verdana";
+    font-size: 30pt;
+}
+
+h4 {
+    color: mediumblue;
+    font-size: 24pt;
+    font-family: monospace;
 }
