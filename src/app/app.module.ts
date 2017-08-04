@@ -19,7 +19,8 @@ import { DataTableModule,
          MenuModule,
          TieredMenuModule,
          TabMenuModule,
-         ChartModule } from 'primeng/primeng';
+         ChartModule,
+         GalleriaModule } from 'primeng/primeng';
 
 // Example components imports
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
@@ -29,6 +30,7 @@ import { OrgchartExampleComponent } from './orgchart-example/orgchart-example.co
 import { TreeExampleComponent } from './tree-example/tree-example.component';
 import { MenuExampleComponent } from './menu-example/menu-example.component';
 import { ChartExampleComponent } from './chart-example/chart-example.component';
+import { GalleriaExampleComponent } from './galleria-example/galleria-example.component';
 
 
 const aRutas : Routes = [
@@ -39,7 +41,8 @@ const aRutas : Routes = [
   { path: 'orgchart', component: OrgchartExampleComponent },
   { path: 'tree', component: TreeExampleComponent },
   { path: 'menu', component: MenuExampleComponent },
-  { path: 'chart', component: ChartExampleComponent }
+  { path: 'chart', component: ChartExampleComponent },
+  { path: 'galleria', component: GalleriaExampleComponent }
 ];
 
 @NgModule({
@@ -51,7 +54,8 @@ const aRutas : Routes = [
     OrgchartExampleComponent,
     TreeExampleComponent,
     MenuExampleComponent,
-    ChartExampleComponent
+    ChartExampleComponent,
+    GalleriaExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,7 @@ const aRutas : Routes = [
     TieredMenuModule,
     TabMenuModule,
     ChartModule,
+    GalleriaModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

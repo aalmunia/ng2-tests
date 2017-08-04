@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p class="backToInit">
+      <a [routerLink]="['/']">Inicio</a>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4>Control Galleria</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <p-galleria (onImageClicked)="hndlGalleriaImageClicked($event.image, $event.originalEvent, $event.index)" [images]="aGalleriaImages" panelWidth="1024" panelHeight="768" [showCaption]="true"></p-galleria>
+  </div>  
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <pre>
+      {{ strSelectedImage }}
+    </pre>
+  </div>
+</div>
