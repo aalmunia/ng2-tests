@@ -3,7 +3,16 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MenuExampleService {
 
+  // Esto habría que refactorizarlo usando rjxs, Subject y Observable patterns
+  oComponentUses: any;
+
   constructor() { }
+
+  // Idem que antes, refactorizar. De momento lo dejo porque mas o menos funciona,
+  // aunque es una ñapa bastante cutre.
+  setComponentReference(oComponent) {
+    this.oComponentUses = oComponent;
+  }
 
   getMegaMenuStruct() {
     return [
@@ -43,25 +52,36 @@ export class MenuExampleService {
               ]
             }
           ]
-        ]
+        ]        
       }
     ];
+  }
+  
+  hndlMenuOptionClick(oEvent, oToModify) {
+    this.oComponentUses[oToModify] = "ELEMENTO SELECCIONADO: ";
+    this.oComponentUses[oToModify] += oEvent.item.label;
   }
 
 
   getStdMenuStruct() {
-    return [
+    var oStruct = [
       {
         label: 'File',
         icon: 'fa-file',
         items: [
           {
             label: 'New',
-            icon: 'fa-plus-circle'
+            icon: 'fa-plus-circle',
+            command: (event) => {
+              this.hndlMenuOptionClick(event, 'horizontalSelectedMenuItems');
+            }
           },
           {
             label: 'Open',
-            icon: 'fa-folder-open'
+            icon: 'fa-folder-open',
+            command: (event) => {
+              this.hndlMenuOptionClick(event, 'horizontalSelectedMenuItems');
+            }
           },
           {
             label: 'Preferences',
@@ -85,7 +105,11 @@ export class MenuExampleService {
               }
             ]
           }
-        ]
+        ],
+        command: (event) => {
+          this.oComponentUses.horizontalSelectedMenuItems = "ELEMENTO SELECCIONADO: ";
+          this.oComponentUses.horizontalSelectedMenuItems += event.item.label;
+        }
       },
       {
         label: 'Edit',
@@ -138,6 +162,7 @@ export class MenuExampleService {
         ]
       }
     ];
+    return oStruct;
   }
 
   getMenuTwoLevels() {
@@ -147,7 +172,20 @@ export class MenuExampleService {
         icon: 'fa-html5',
         items: [
           {
-            label: 'html'
+            label: 'html',
+            command: (event) => {
+              console.log(event);
+              console.log(this);
+              /**
+               * ¿Disparar evento con el texto seleccionado?
+               * De algun modo hay que informar al resto de componentes
+               * de la aplicación de la selección de una nueva opción
+               * de menú.
+               */
+              /* console.log(a);
+              console.log(b);
+              console.log(c); */
+            }
           },
           {
             label: 'css'

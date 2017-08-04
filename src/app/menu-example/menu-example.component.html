@@ -1,11 +1,20 @@
-<p class="backToInit">
-  <a [routerLink]="['/']">Inicio</a>
-</p>
-<hr /><br />
+<div class="row">
+  <div class="col-xs-12">
+    <p class="backToInit">
+      <a [routerLink]="['/']">Inicio</a>
+    </p>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-xs-8">
 <h4>Menú de barra horizontal</h4>
-<p-menubar #menu [model]="standardMenuItems"></p-menubar>
-<hr />
+<p-menubar #myMenuBar [model]="standardMenuItems"></p-menubar>
+  </div>
+  <div class="col-xs-4">
+    {{ horizontalSelectedMenuItems }}
+  </div>
+</div>
 
 <h4>Menú Slide lateral</h4>
 <p-slideMenu [model]="standardMenuItems"></p-slideMenu>
@@ -21,4 +30,3 @@
 
 <h4>Menú de dos niveles</h4>
 <p-menu [model]="twoLevelsMenuItems"></p-menu>
-
