@@ -1,3 +1,5 @@
-<p>
-  chips-example works!
-</p>
+<!-- @todo: Revisar por que no funcionan los manejadores de eventos para estos controles -->
+<p>El control Chips sirve para poder guardar diferentes cadenas de texto</p>
+<p-chips [(ngModel)]="valuesFirstChipsControl" (onAdd)="hndlFirstChipsAdd()" (onRemove)="hndlFirstChipsRemove(oEvent, sValue)"></p-chips>
+<p>Este chips trae datos desde el componente</p>
+<p-chips [(ngModel)]="valuesSecondChipsControl"></p-chips>
