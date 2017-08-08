@@ -21,7 +21,11 @@ import { DataTableModule,
          TabMenuModule,
          ChartModule,
          GalleriaModule,
-         CodeHighlighterModule } from 'primeng/primeng';
+         CodeHighlighterModule,
+         CalendarModule,
+         ChipsModule } from 'primeng/primeng';
+
+import { FormsModule } from '@angular/forms';         
 
 // Example components imports
 import { GmapExampleComponent } from './gmap-example/gmap-example.component';
@@ -33,6 +37,8 @@ import { MenuExampleComponent } from './menu-example/menu-example.component';
 import { ChartExampleComponent } from './chart-example/chart-example.component';
 import { GalleriaExampleComponent } from './galleria-example/galleria-example.component';
 import { CodeHighlightExampleComponent } from './code-highlight-example/code-highlight-example.component';
+import { CalendarExampleComponent } from './calendar-example/calendar-example.component';
+import { ChipsExampleComponent } from './chips-example/chips-example.component';
 
 
 const aRutas : Routes = [
@@ -45,7 +51,9 @@ const aRutas : Routes = [
   { path: 'menu', component: MenuExampleComponent },
   { path: 'chart', component: ChartExampleComponent },
   { path: 'galleria', component: GalleriaExampleComponent },
-  { path: 'code-highlight', component: CodeHighlightExampleComponent }
+  { path: 'code-highlight', component: CodeHighlightExampleComponent },
+  { path: 'calendar', component: CalendarExampleComponent },
+  { path: 'chips', component: ChipsExampleComponent }
 ];
 
 @NgModule({
@@ -59,7 +67,9 @@ const aRutas : Routes = [
     MenuExampleComponent,
     ChartExampleComponent,
     GalleriaExampleComponent,
-    CodeHighlightExampleComponent
+    CodeHighlightExampleComponent,
+    CalendarExampleComponent,
+    ChipsExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +91,9 @@ const aRutas : Routes = [
     ChartModule,
     GalleriaModule,
     CodeHighlighterModule,
+    CalendarModule,
+    FormsModule,
+    ChipsModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],
