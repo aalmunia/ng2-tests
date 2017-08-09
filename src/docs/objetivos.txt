@@ -1,0 +1,8 @@
+Objetivos:
+
+- Generar ejemplos para cada control de la librería PrimeNG
+- Manejar las diferentes opciones de cada control, en los ejemplos
+- Gestionar los controles, donde proceda, a través de código fuente,
+usando ViewChild para ello
+- Escribir un tutorial para cada ejemplo, explicando qué es cada
+cosa y por qué se realiza de esa forma
