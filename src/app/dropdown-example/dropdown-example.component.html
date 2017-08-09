@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-4">
+        <span>Dropdown estándar</span>
+        <br />
+        <p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionada"></p-dropdown><br />
+        <span>Seleccionada: {{ sCiudadSeleccionada }}</span>        
+    </div>
+
+    <div class="col-xs-4">
+        <span>Dropdown editable</span><br />
+        <p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionadaEditable" editable="editable" 
+            (onChange)="hndlChangeEditable($event, $event.value)"></p-dropdown>
+    </div>
+
+    <div class="col-xs-4">
+        <span>Dropdown con filtrado</span><br />
+        <p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionadaFiltrado" filter="true"></p-dropdown>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+</div>
+
+
+<!-- <p>Dropdown estándar</p>
+<p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionada"></p-dropdown><br />
+<span>Seleccionada: {{ sCiudadSeleccionada }}</span>
+<br />
+
+<p>Dropdown editable</p>
+<p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionadaEditable" editable="editable" 
+    (onChange)="hndlChangeEditable($event, $event.value)"></p-dropdown><br />
+
+<p>Dropdown con filtrado</p>
+<p-dropdown [options]="aCiudades" [(ngModel)]="sCiudadSeleccionadaFiltrado" filter="true"></p-dropdown>
+<br /> -->
+

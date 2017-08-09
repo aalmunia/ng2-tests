@@ -40,6 +40,7 @@ import { GalleriaExampleComponent } from './galleria-example/galleria-example.co
 import { CodeHighlightExampleComponent } from './code-highlight-example/code-highlight-example.component';
 import { CalendarExampleComponent } from './calendar-example/calendar-example.component';
 import { ChipsExampleComponent } from './chips-example/chips-example.component';
+import { DropdownExampleComponent } from './dropdown-example/dropdown-example.component';
 
 
 const aRutas : Routes = [
@@ -54,7 +55,8 @@ const aRutas : Routes = [
   { path: 'galleria', component: GalleriaExampleComponent },
   { path: 'code-highlight', component: CodeHighlightExampleComponent },
   { path: 'calendar', component: CalendarExampleComponent },
-  { path: 'chips', component: ChipsExampleComponent }
+  { path: 'chips', component: ChipsExampleComponent },
+  { path: 'dropdown', component: DropdownExampleComponent }
 ];
 
 @NgModule({
@@ -70,7 +72,8 @@ const aRutas : Routes = [
     GalleriaExampleComponent,
     CodeHighlightExampleComponent,
     CalendarExampleComponent,
-    ChipsExampleComponent
+    ChipsExampleComponent,
+    DropdownExampleComponent
   ],
   imports: [
     BrowserModule,
