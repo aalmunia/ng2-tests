@@ -23,7 +23,8 @@ import { DataTableModule,
          GalleriaModule,
          CodeHighlighterModule,
          CalendarModule,
-         ChipsModule } from 'primeng/primeng';
+         ChipsModule,
+         DropdownModule } from 'primeng/primeng';
 
 import { FormsModule } from '@angular/forms';         
 
@@ -94,6 +95,7 @@ const aRutas : Routes = [
     CalendarModule,
     FormsModule,
     ChipsModule,
+    DropdownModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

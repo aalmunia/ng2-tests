@@ -22,9 +22,11 @@ export class ChipsExampleComponent implements OnInit {
     console.log('Valor agregado: ' + sValue);
     console.log('Valores del control: ');
     console.log(this.valuesFirstChipsControl);
+    console.log('Evento: ');
+    console.log(oEvent);
   }
 
-  hndlFirstChipsRemove(oEvent,sValue) {
+  hndlFirstChipsRemove(oEvent, sValue) {
     console.log('Valor quitado: ' + sValue);
     console.log('Valores del control: ');
     console.log(this.valuesFirstChipsControl);
