@@ -27,7 +27,8 @@ import { DataTableModule,
          DropdownModule,
          InputSwitchModule,
          InputMaskModule,
-         RatingModule } from 'primeng/primeng';
+         RatingModule,
+         SpinnerModule } from 'primeng/primeng';
 
 import { FormsModule } from '@angular/forms';         
 
@@ -47,6 +48,7 @@ import { DropdownExampleComponent } from './dropdown-example/dropdown-example.co
 import { SwitchExampleComponent } from './switch-example/switch-example.component';
 import { MaskExampleComponent } from './mask-example/mask-example.component';
 import { RatingExampleComponent } from './rating-example/rating-example.component';
+import { SpinnerExampleComponent } from './spinner-example/spinner-example.component';
 
 
 const aRutas : Routes = [
@@ -65,7 +67,8 @@ const aRutas : Routes = [
   { path: 'dropdown', component: DropdownExampleComponent },
   { path: 'switch', component: SwitchExampleComponent },
   { path: 'mask', component: MaskExampleComponent },
-  { path: 'rating', component: RatingExampleComponent }
+  { path: 'rating', component: RatingExampleComponent },
+  { path: 'spinner', component: SpinnerExampleComponent }
 ];
 
 @NgModule({
@@ -85,7 +88,8 @@ const aRutas : Routes = [
     DropdownExampleComponent,
     SwitchExampleComponent,
     MaskExampleComponent,
-    RatingExampleComponent
+    RatingExampleComponent,
+    SpinnerExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +118,7 @@ const aRutas : Routes = [
     InputSwitchModule,
     InputMaskModule,
     RatingModule,
+    SpinnerModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],
