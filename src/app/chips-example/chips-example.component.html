@@ -1,5 +1,22 @@
-<!-- @todo: Revisar por que no funcionan los manejadores de eventos para estos controles -->
-<p>El control Chips sirve para poder guardar diferentes cadenas de texto</p>
-<p-chips [(ngModel)]="valuesFirstChipsControl" (onAdd)="hndlFirstChipsAdd()" (onRemove)="hndlFirstChipsRemove(oEvent, sValue)"></p-chips>
-<p>Este chips trae datos desde el componente</p>
-<p-chips [(ngModel)]="valuesSecondChipsControl"></p-chips>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="backToInit">
+        <a [routerLink]="['/']">Inicio</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-xs-6">
+        <span>Control chips estándar</span><br />
+        <p-chips [(ngModel)]="valuesFirstChipsControl" (onAdd)="hndlFirstChipsAdd($event, $event.value)" (onRemove)="hndlFirstChipsRemove($event, $event.value)"></p-chips>
+      </div>
+      <div class="col-xs-6">
+        <span>Control chips con datos</span><br />
+        <p-chips [(ngModel)]="valuesSecondChipsControl"></p-chips>
+      </div>
+  </div>
+
+</div>

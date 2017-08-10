@@ -1,12 +1,48 @@
-<p>Calendario controlado exclusivamente a través de código en JavaScript</p><br />
-<p-calendar #firstCalendar (onSelect)="hndlFirstCalendarSelect()"></p-calendar>
-<p>Calendario standard PrimeNG con fecha de hoy</p><br />
-<p-calendar [(ngModel)]="secondCalendarValue" (onSelect)="hdnlSecondCalendarSelect()"></p-calendar>
-<p>Calendario con precision temporal (horas y minutos)</p><br />
-<p-calendar #thirdCalendar [(ngModel)]="thirdCalendarValue" dateFormat="dd.mm.yy" showTime="showTime" hourFormat="24"></p-calendar><br />
-<p>Calendario acotado (01/08/2017 - 01/10/2017), sin edición manual</p><br />
-<p-calendar #fourthCalendar [minDate]="minDateFourthCalendar" readonlyInput="readonlyInput" [maxDate]="maxDateFourthCalendar"></p-calendar>
-<p>Calendario con fechas en Español</p><br />
-<p-calendar [locale]="fechasEnEspanol"></p-calendar>
-<p>Calendario inline (no es un popuop desde un control)</p><br />
-<p-calendar [inline]="true"></p-calendar>
+<div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="backToInit">
+                <a [routerLink]="['/']">Inicio</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-6">
+            <span>Calendario controlado por código JS</span><br />
+            <p-calendar #firstCalendar (onSelect)="hndlFirstCalendarSelect()"></p-calendar>
+        </div>
+        <div class="col-xs-6">
+            <span>Calendario precision temporal</span><br />
+            <p-calendar #thirdCalendar [(ngModel)]="thirdCalendarValue" dateFormat="dd.mm.yy" showTime="showTime" hourFormat="24"></p-calendar>
+        </div>
+
+    </div>
+    <br /><br />
+
+    <div class="row">
+        <div class="col-xs-6">
+            <span>Calendario estándar fecha hoy</span><br />
+            <p-calendar [(ngModel)]="secondCalendarValue" (onSelect)="hdnlSecondCalendarSelect()"></p-calendar>
+        </div>
+        <div class="col-xs-6">
+            <span>Calendario acotado sin edicion manual</span><br />
+            <p-calendar #fourthCalendar [minDate]="minDateFourthCalendar" readonlyInput="readonlyInput" [maxDate]="maxDateFourthCalendar"></p-calendar>
+        </div>
+    </div>
+    <br /><br />
+
+    <div class="row">
+        <div class="col-xs-6">
+            <span>Calendario fechas Español</span><br />
+            <p-calendar [locale]="fechasEnEspanol"></p-calendar>
+        </div>
+        <div class="col-xs-6">
+            <span>Calendario inline</span><br />
+            <p-calendar [inline]="true"></p-calendar>      
+        </div>
+    </div>
+
+</div>

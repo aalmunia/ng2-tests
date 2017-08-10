@@ -25,7 +25,8 @@ import { DataTableModule,
          CalendarModule,
          ChipsModule,
          DropdownModule,
-         InputSwitchModule } from 'primeng/primeng';
+         InputSwitchModule,
+         InputMaskModule } from 'primeng/primeng';
 
 import { FormsModule } from '@angular/forms';         
 
@@ -43,6 +44,7 @@ import { CalendarExampleComponent } from './calendar-example/calendar-example.co
 import { ChipsExampleComponent } from './chips-example/chips-example.component';
 import { DropdownExampleComponent } from './dropdown-example/dropdown-example.component';
 import { SwitchExampleComponent } from './switch-example/switch-example.component';
+import { MaskExampleComponent } from './mask-example/mask-example.component';
 
 
 const aRutas : Routes = [
@@ -59,7 +61,8 @@ const aRutas : Routes = [
   { path: 'calendar', component: CalendarExampleComponent },
   { path: 'chips', component: ChipsExampleComponent },
   { path: 'dropdown', component: DropdownExampleComponent },
-  { path: 'switch', component: SwitchExampleComponent }
+  { path: 'switch', component: SwitchExampleComponent },
+  { path: 'mask', component: MaskExampleComponent }
 ];
 
 @NgModule({
@@ -77,7 +80,8 @@ const aRutas : Routes = [
     CalendarExampleComponent,
     ChipsExampleComponent,
     DropdownExampleComponent,
-    SwitchExampleComponent
+    SwitchExampleComponent,
+    MaskExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ const aRutas : Routes = [
     ChipsModule,
     DropdownModule,
     InputSwitchModule,
+    InputMaskModule,
     RouterModule.forRoot(aRutas)
   ],
   providers: [],

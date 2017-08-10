@@ -1,32 +1,35 @@
-<div class="row">
-  <div class="col-xs-12">
-    <p class="backToInit">
-      <a [routerLink]="['/']">Inicio</a>
-    </p>
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="backToInit">
+        <a [routerLink]="['/']">Inicio</a>
+      </p>
+    </div>
   </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p-menubar #myMenuBar [model]="standardMenuItems"></p-menubar>
+    </div>    
+  </div>
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-xs-3">
+      <p-slideMenu [model]="standardMenuItems"></p-slideMenu>
+    </div>
+    <div class="col-xs-3">
+      <p-tieredMenu [model]="standardMenuItems"></p-tieredMenu>
+    </div>
+    <div class="col-xs-3">
+      <p-tabMenu [model]="tabbedMenuItems"></p-tabMenu>
+    </div>
+    <div class="col-xs-3">
+      <p-menu [model]="twoLevelsMenuItems"></p-menu>
+    </div>
+  </div>
+
 </div>
-
-<div class="row">
-  <div class="col-xs-8">
-<h4>Menú de barra horizontal</h4>
-<p-menubar #myMenuBar [model]="standardMenuItems"></p-menubar>
-  </div>
-  <div class="col-xs-4">
-    {{ horizontalSelectedMenuItems }}
-  </div>
-</div>
-
-<h4>Menú Slide lateral</h4>
-<p-slideMenu [model]="standardMenuItems"></p-slideMenu>
-<hr />
-
-<h4>Menú enlazado</h4>
-<p-tieredMenu [model]="standardMenuItems"></p-tieredMenu>
-<hr />
-
-<h4>Menú de tabs</h4>
-<p-tabMenu [model]="tabbedMenuItems"></p-tabMenu>
-<hr />
-
-<h4>Menú de dos niveles</h4>
-<p-menu [model]="twoLevelsMenuItems"></p-menu>

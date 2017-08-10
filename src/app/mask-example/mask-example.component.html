@@ -1,0 +1,54 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="backToInit">
+        <a [routerLink]="['/']">Inicio</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- 
+  @todo: ¿No admite una regexp para la mask? Sería muy util.
+  Investigar este tema a ver si se puede extender la clase del
+  inputMask para contemplar este caso...
+  -->
+
+  <div class="row">
+    <div class="col-xs-4">
+      <span>Solo letras (max. 15 letras)</span><br />
+      <p-inputMask #firstMask size="25" [(ngModel)]="sValOnlyLetters" mask="aaaaaaaaaaaaaaa" placeholder="letras (15 max)"></p-inputMask><br />
+      <span>{{ sValMask1 }}</span>
+    </div>
+    <div class="col-xs-4">
+      <span>Solo numeros (max. 15 numeros)</span><br />
+      <p-inputMask #secondMask size="25" [(ngModel)]="sValOnlyNumbers" mask="999999999999999" placeholder="numeros (15 max)"></p-inputMask><br />
+      <span>{{ sValMask2 }}</span>
+    </div>
+    <div class="col-xs-4">
+      <span>Numero de telefono móvil</span><br />
+      <p-inputMask #thirdMask size="25" [(ngModel)]="sValMobilePhone" mask="999999999" placeholder="9 numeros"></p-inputMask><br />
+      <span>{{ sValMask3 }}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <span>NIF</span><br />
+      <p-inputMask #fourthMask size="25" [(ngModel)]="sValNIF" mask="99999999a" placeholder="99999999a"></p-inputMask><br />
+      <span>{{ sValMask4 }}</span>
+    </div>
+    <div class="col-xs-4">
+      <span>ISBN</span><br />
+      <p-inputMask #fifthMask size="25" [(ngModel)]="sValISBN" mask="999-9-99-999999-9" placeholder="999-9-99-999999-9"></p-inputMask><br />
+      <span>{{ sValMask5 }}</span>      
+    </div>
+    <div class="col-xs-4">
+      <span>IBAN</span><br />
+      <p-inputMask #sixthMask size="25" [(ngModel)]="sValIBAN" mask="aa-9999-9999-99-9999999999" placeholder="aa-9999-9999-99-9999999999"></p-inputMask><br />
+      {{ sValIBAN }}
+    </div>
+  </div>
+
+
+</div>

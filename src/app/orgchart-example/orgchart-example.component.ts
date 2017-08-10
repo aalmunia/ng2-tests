@@ -10,48 +10,14 @@ import { OrgchartExampleService } from './orgchart-example.service';
 })
 export class OrgchartExampleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private oDataService: OrgchartExampleService) { }
 
-  data: TreeNode[];
+  private data: TreeNode[];
 
   ngOnInit() {
-
-    this.data = [{
-      label: 'Root',
-      expanded: true,
-      children: [
-        {
-          label: 'Child 1',
-          children: [
-            {
-              label: 'Grandchild 1.1'
-            },
-            {
-              label: 'Grandchild 1.2'
-            }
-          ]
-        },
-        {
-          label: 'Child 2',
-          children: [
-            {
-              label: 'Child 2.1'
-            },
-            {
-              label: 'Child 2.2'
-            }
-          ]
-        }
-      ]
-    }];
-
-    // Cargar datos del servicio
-
-    // Inicializar arbol de nodos
-
-    // Render
-
-    // Done
+    this.data = this.oDataService.getMockData();
+    //@todo: En pulsando cada elemento, ir a la web de la propiedad .url
+    //del objeto.
   }
 
 }
