@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="backToInit">
+        <a [routerLink]="['/']">Inicio</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <span>Rating Standard</span><br />
+      <p-rating [(ngModel)]="iRatingStandard" stars="10"></p-rating><br />
+      <span>{{ iRatingStandard }}</span>
+    </div>
+    <div class="col-xs-6">
+      <span>Rating con callback</span><br />
+      <p-rating [(ngModel)]="iRatingCallback" stars="10" (onRate)="handleRate($event)" (onCancel)="handleCancel($event)"></p-rating><br />
+      <span>{{ strCallbackResult }}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <span>Rating solo lectura</span><br />
+      <p-rating [ngModel]="iRatingReadOnly" stars="10" readonly="true"></p-rating><br />      
+    </div>
+    <div class="col-xs-6">
+      <span>Rating no cancelable</span><br />
+      <p-rating [(ngModel)]="iRatingNoCancel" stars="10" [cancel]="false"></p-rating><br />
+      <span>{{ iRatingNoCancel }}</span>
+    </div>
+  </div>
+
+</div>
