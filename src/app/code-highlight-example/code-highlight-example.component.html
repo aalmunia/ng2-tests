@@ -1,23 +1,56 @@
-<div class="row">
-  <div class="col-xs-12">
-    <p class="backToInit">
-      <a [routerLink]="['/']">Inicio</a>
-    </p>
-  </div>
-</div>
+<!-- @todo: Revisar por qué demonios no colorea el código de C++
+Tampoco lo hace para el código de PHP
+-->
 
-<div class="row">
-  <div class="col-xs-12">
-    <h4>Código HTML</h4>
-  </div>
-</div>
+<div class="container">
 
-<div class="row">
-  <div class="col-xs-12">
-    <pre>
-      <code class="language-markup" pCode ngNonBindable>
-      &lt;p&gt;Esto es código HTML que debería verse como tal&lt;/p&gt;
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="backToInit">
+        <a [routerLink]="['/']">Inicio</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Código C++</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <pre>
+      <code class="language-clike" pCode>
+        <![CDATA[
+        #include <iostream>        
+        void main(int argc, char** argv) {
+          std::cout << "Hola mundo desde C++" << std::endl;
+        }
+        ]]>
       </code>
     </pre>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Código PHP</h4>      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <pre>
+        <code class="language-php" pCode>
+          <![CDATA[
+          <?php
+          echo "Hola, mundo desde PHP";
+          ?>
+          ]]>
+        </code>
+      </pre>
+    </div>
+  </div>
+
 </div>

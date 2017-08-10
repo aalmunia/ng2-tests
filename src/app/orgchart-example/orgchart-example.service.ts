@@ -63,7 +63,7 @@ export class OrgchartExampleService {
           },
           {
             label: 'Otros',
-            chidren: [
+            children: [
               {
                 label: 'Python',
                 url: 'https://www.python.org/'

@@ -15,17 +15,12 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-8">
       <p-galleria (onImageClicked)="hndlGalleriaImageClicked($event.image, $event.originalEvent, $event.index)" [images]="aGalleriaImages"
-        panelWidth="1024" panelHeight="768" [showCaption]="true"></p-galleria>
+        panelWidth="512" panelHeight="384" [showCaption]="true"></p-galleria>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <pre>
+    <div class="col-xs-4">
       {{ strSelectedImage }}
-    </pre>
     </div>
   </div>
 
