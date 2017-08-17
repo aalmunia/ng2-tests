@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, TemplateRef, Component, OnInit } from '@angular/core';
+import { SpinnerModule } from 'primeng/primeng';
 
 @Component({
   selector: 'app-spinner-example',

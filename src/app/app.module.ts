@@ -30,6 +30,7 @@ import { DataTableModule,
          RatingModule,
          SpinnerModule } from 'primeng/primeng';
 
+// La directiva ngModel está aquí.
 import { FormsModule } from '@angular/forms';         
 
 // Example components imports
